@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>多态</title>
+      <style>.markdown-preview:not([data-use-github-style]) { padding: 2em; font-size: 1.2em; color: rgb(171, 178, 191); overflow: auto; background-color: rgb(40, 44, 52); }
+.markdown-preview:not([data-use-github-style]) > :first-child { margin-top: 0px; }
+.markdown-preview:not([data-use-github-style]) h1, .markdown-preview:not([data-use-github-style]) h2, .markdown-preview:not([data-use-github-style]) h3, .markdown-preview:not([data-use-github-style]) h4, .markdown-preview:not([data-use-github-style]) h5, .markdown-preview:not([data-use-github-style]) h6 { line-height: 1.2; margin-top: 1.5em; margin-bottom: 0.5em; color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) h1 { font-size: 2.4em; font-weight: 300; }
+.markdown-preview:not([data-use-github-style]) h2 { font-size: 1.8em; font-weight: 400; }
+.markdown-preview:not([data-use-github-style]) h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview:not([data-use-github-style]) h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) strong { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) del { color: rgb(124, 135, 156); }
+.markdown-preview:not([data-use-github-style]) a, .markdown-preview:not([data-use-github-style]) a code { color: rgb(82, 139, 255); }
+.markdown-preview:not([data-use-github-style]) img { max-width: 100%; }
+.markdown-preview:not([data-use-github-style]) > p { margin-top: 0px; margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) > ul, .markdown-preview:not([data-use-github-style]) > ol { margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) blockquote { margin: 1.5em 0px; font-size: inherit; color: rgb(124, 135, 156); border-color: rgb(75, 83, 98); border-width: 4px; }
+.markdown-preview:not([data-use-github-style]) hr { margin: 3em 0px; border-top-width: 2px; border-top-style: dashed; border-top-color: rgb(75, 83, 98); background: none; }
+.markdown-preview:not([data-use-github-style]) table { margin: 1.5em 0px; }
+.markdown-preview:not([data-use-github-style]) th { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) th, .markdown-preview:not([data-use-github-style]) td { padding: 0.66em 1em; border: 1px solid rgb(75, 83, 98); }
+.markdown-preview:not([data-use-github-style]) code { color: rgb(255, 255, 255); background-color: rgb(58, 63, 75); }
+.markdown-preview:not([data-use-github-style]) pre.editor-colors { margin: 1.5em 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(49, 54, 63); }
+.markdown-preview:not([data-use-github-style]) kbd { color: rgb(255, 255, 255); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(75, 83, 98) rgb(75, 83, 98) rgb(62, 68, 81); background-color: rgb(58, 63, 75); }
+.markdown-preview[data-use-github-style] { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; line-height: 1.6; word-wrap: break-word; padding: 30px; font-size: 16px; color: rgb(51, 51, 51); overflow: scroll; background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
+.markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
+.markdown-preview[data-use-github-style] a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview[data-use-github-style] .absent { color: rgb(204, 0, 0); }
+.markdown-preview[data-use-github-style] .anchor { position: absolute; top: 0px; left: 0px; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; }
+.markdown-preview[data-use-github-style] .anchor:focus { outline: none; }
+.markdown-preview[data-use-github-style] h1, .markdown-preview[data-use-github-style] h2, .markdown-preview[data-use-github-style] h3, .markdown-preview[data-use-github-style] h4, .markdown-preview[data-use-github-style] h5, .markdown-preview[data-use-github-style] h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; }
+.markdown-preview[data-use-github-style] h1 .octicon-link, .markdown-preview[data-use-github-style] h2 .octicon-link, .markdown-preview[data-use-github-style] h3 .octicon-link, .markdown-preview[data-use-github-style] h4 .octicon-link, .markdown-preview[data-use-github-style] h5 .octicon-link, .markdown-preview[data-use-github-style] h6 .octicon-link { display: none; color: rgb(0, 0, 0); vertical-align: middle; }
+.markdown-preview[data-use-github-style] h1:hover .anchor, .markdown-preview[data-use-github-style] h2:hover .anchor, .markdown-preview[data-use-github-style] h3:hover .anchor, .markdown-preview[data-use-github-style] h4:hover .anchor, .markdown-preview[data-use-github-style] h5:hover .anchor, .markdown-preview[data-use-github-style] h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; }
+.markdown-preview[data-use-github-style] h1:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h2:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h3:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h4:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h5:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h6:hover .anchor .octicon-link { display: inline-block; }
+.markdown-preview[data-use-github-style] h1 tt, .markdown-preview[data-use-github-style] h2 tt, .markdown-preview[data-use-github-style] h3 tt, .markdown-preview[data-use-github-style] h4 tt, .markdown-preview[data-use-github-style] h5 tt, .markdown-preview[data-use-github-style] h6 tt, .markdown-preview[data-use-github-style] h1 code, .markdown-preview[data-use-github-style] h2 code, .markdown-preview[data-use-github-style] h3 code, .markdown-preview[data-use-github-style] h4 code, .markdown-preview[data-use-github-style] h5 code, .markdown-preview[data-use-github-style] h6 code { font-size: inherit; }
+.markdown-preview[data-use-github-style] h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h1 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h2 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h3 { font-size: 1.5em; line-height: 1.43; }
+.markdown-preview[data-use-github-style] h3 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h4 { font-size: 1.25em; }
+.markdown-preview[data-use-github-style] h4 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h5 { font-size: 1em; }
+.markdown-preview[data-use-github-style] h5 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] h6 { font-size: 1em; color: rgb(119, 119, 119); }
+.markdown-preview[data-use-github-style] h6 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] p, .markdown-preview[data-use-github-style] blockquote, .markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol, .markdown-preview[data-use-github-style] dl, .markdown-preview[data-use-github-style] table, .markdown-preview[data-use-github-style] pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] hr { height: 4px; padding: 0px; margin: 16px 0px; border: 0px none; background-color: rgb(231, 231, 231); }
+.markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol { padding-left: 2em; }
+.markdown-preview[data-use-github-style] ul.no-list, .markdown-preview[data-use-github-style] ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview[data-use-github-style] ul ul, .markdown-preview[data-use-github-style] ul ol, .markdown-preview[data-use-github-style] ol ol, .markdown-preview[data-use-github-style] ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] li > p { margin-top: 16px; }
+.markdown-preview[data-use-github-style] dl { padding: 0px; }
+.markdown-preview[data-use-github-style] dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview[data-use-github-style] dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] blockquote { padding: 0px 15px; color: rgb(119, 119, 119); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] blockquote > :first-child { margin-top: 0px; }
+.markdown-preview[data-use-github-style] blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] table { display: block; width: 100%; overflow: auto; word-break: keep-all; }
+.markdown-preview[data-use-github-style] table th { font-weight: bold; }
+.markdown-preview[data-use-github-style] table th, .markdown-preview[data-use-github-style] table td { padding: 6px 13px; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] table tr { border-top-width: 1px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+.markdown-preview[data-use-github-style] img { max-width: 100%; box-sizing: border-box; }
+.markdown-preview[data-use-github-style] .emoji { max-width: none; }
+.markdown-preview[data-use-github-style] span.frame { display: block; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.frame > span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0px 0px; overflow: hidden; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] span.frame span img { display: block; float: left; }
+.markdown-preview[data-use-github-style] span.frame span span { display: block; padding: 5px 0px 0px; clear: both; color: rgb(51, 51, 51); }
+.markdown-preview[data-use-github-style] span.align-center { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-center > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-center span img { margin: 0px auto; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-right { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-right > span { display: block; margin: 13px 0px 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] span.align-right span img { margin: 0px; text-align: right; }
+.markdown-preview[data-use-github-style] span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-left span { margin: 13px 0px 0px; }
+.markdown-preview[data-use-github-style] span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-right > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] code, .markdown-preview[data-use-github-style] tt { padding: 0.2em 0px; margin: 0px; font-size: 85%; border-radius: 3px; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview[data-use-github-style] code::before, .markdown-preview[data-use-github-style] tt::before, .markdown-preview[data-use-github-style] code::after, .markdown-preview[data-use-github-style] tt::after { letter-spacing: -0.2em; content: " "; }
+.markdown-preview[data-use-github-style] code br, .markdown-preview[data-use-github-style] tt br { display: none; }
+.markdown-preview[data-use-github-style] del code { text-decoration: inherit; }
+.markdown-preview[data-use-github-style] pre > code { padding: 0px; margin: 0px; font-size: 100%; word-break: normal; white-space: pre; border: 0px; background: transparent; }
+.markdown-preview[data-use-github-style] .highlight { margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] .highlight pre, .markdown-preview[data-use-github-style] pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; border-radius: 3px; background-color: rgb(247, 247, 247); }
+.markdown-preview[data-use-github-style] .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview[data-use-github-style] pre { word-wrap: normal; }
+.markdown-preview[data-use-github-style] pre code, .markdown-preview[data-use-github-style] pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview[data-use-github-style] pre code::before, .markdown-preview[data-use-github-style] pre tt::before, .markdown-preview[data-use-github-style] pre code::after, .markdown-preview[data-use-github-style] pre tt::after { content: normal; }
+.markdown-preview[data-use-github-style] kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: rgb(85, 85, 85); vertical-align: middle; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview[data-use-github-style] a { color: rgb(51, 122, 183); }
+.markdown-preview[data-use-github-style] code { color: inherit; }
+.markdown-preview[data-use-github-style] pre.editor-colors { padding: 0.8em 1em; margin-bottom: 1em; font-size: 0.85em; border-radius: 4px; overflow: auto; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .horizontal-scrollbar { visibility: hidden; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .horizontal-scrollbar { visibility: visible; }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+
+pre.editor-colors,
+.host {
+  background-color: #282c34;
+  color: #abb2bf;
+}
+pre.editor-colors .line.cursor-line,
+.host .line.cursor-line {
+  background-color: rgba(153, 187, 255, 0.04);
+}
+pre.editor-colors .invisible,
+.host .invisible {
+  color: #abb2bf;
+}
+pre.editor-colors .cursor,
+.host .cursor {
+  border-left: 2px solid #528bff;
+}
+pre.editor-colors .selection .region,
+.host .selection .region {
+  background-color: #3e4451;
+}
+pre.editor-colors .bracket-matcher .region,
+.host .bracket-matcher .region {
+  border-bottom: 1px solid #528bff;
+  box-sizing: border-box;
+}
+pre.editor-colors .invisible-character,
+.host .invisible-character {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .indent-guide,
+.host .indent-guide {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .wrap-guide,
+.host .wrap-guide {
+  background-color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .gutter .line-number,
+.host .gutter .line-number {
+  color: #636d83;
+  -webkit-font-smoothing: antialiased;
+}
+pre.editor-colors .gutter .line-number.cursor-line,
+.host .gutter .line-number.cursor-line {
+  color: #abb2bf;
+  background-color: #2c313a;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection,
+.host .gutter .line-number.cursor-line-no-selection {
+  background-color: transparent;
+}
+pre.editor-colors .gutter .line-number .icon-right,
+.host .gutter .line-number .icon-right {
+  color: #abb2bf;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before {
+  bottom: -3px;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed::after,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 25px;
+  border-bottom: 1px dotted rgba(224, 82, 82, 0.5);
+  pointer-events: none;
+}
+pre.editor-colors .gutter .line-number.folded,
+.host .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+.host .gutter .line-number:after,
+pre.editor-colors .fold-marker:after,
+.host .fold-marker:after {
+  color: #abb2bf;
+}
+.comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.comment .markup.link {
+  color: #5c6370;
+}
+.entity.name.type {
+  color: #e5c07b;
+}
+.entity.other.inherited-class {
+  color: #98c379;
+}
+.keyword {
+  color: #c678dd;
+}
+.keyword.control {
+  color: #c678dd;
+}
+.keyword.operator {
+  color: #abb2bf;
+}
+.keyword.other.special-method {
+  color: #61afef;
+}
+.keyword.other.unit {
+  color: #d19a66;
+}
+.storage {
+  color: #c678dd;
+}
+.storage.type.annotation,
+.storage.type.primitive {
+  color: #c678dd;
+}
+.storage.modifier.package,
+.storage.modifier.import {
+  color: #abb2bf;
+}
+.constant {
+  color: #d19a66;
+}
+.constant.variable {
+  color: #d19a66;
+}
+.constant.character.escape {
+  color: #56b6c2;
+}
+.constant.numeric {
+  color: #d19a66;
+}
+.constant.other.color {
+  color: #56b6c2;
+}
+.constant.other.symbol {
+  color: #56b6c2;
+}
+.variable {
+  color: #e06c75;
+}
+.variable.interpolation {
+  color: #be5046;
+}
+.variable.parameter {
+  color: #abb2bf;
+}
+.string {
+  color: #98c379;
+}
+.string.regexp {
+  color: #56b6c2;
+}
+.string.regexp .source.ruby.embedded {
+  color: #e5c07b;
+}
+.string.other.link {
+  color: #e06c75;
+}
+.punctuation.definition.comment {
+  color: #5c6370;
+}
+.punctuation.definition.method-parameters,
+.punctuation.definition.function-parameters,
+.punctuation.definition.parameters,
+.punctuation.definition.separator,
+.punctuation.definition.seperator,
+.punctuation.definition.array {
+  color: #abb2bf;
+}
+.punctuation.definition.heading,
+.punctuation.definition.identity {
+  color: #61afef;
+}
+.punctuation.definition.bold {
+  color: #e5c07b;
+  font-weight: bold;
+}
+.punctuation.definition.italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.punctuation.section.embedded {
+  color: #be5046;
+}
+.punctuation.section.method,
+.punctuation.section.class,
+.punctuation.section.inner-class {
+  color: #abb2bf;
+}
+.support.class {
+  color: #e5c07b;
+}
+.support.type {
+  color: #56b6c2;
+}
+.support.function {
+  color: #56b6c2;
+}
+.support.function.any-method {
+  color: #61afef;
+}
+.entity.name.function {
+  color: #61afef;
+}
+.entity.name.class,
+.entity.name.type.class {
+  color: #e5c07b;
+}
+.entity.name.section {
+  color: #61afef;
+}
+.entity.name.tag {
+  color: #e06c75;
+}
+.entity.other.attribute-name {
+  color: #d19a66;
+}
+.entity.other.attribute-name.id {
+  color: #61afef;
+}
+.meta.class {
+  color: #e5c07b;
+}
+.meta.class.body {
+  color: #abb2bf;
+}
+.meta.method-call,
+.meta.method {
+  color: #abb2bf;
+}
+.meta.definition.variable {
+  color: #e06c75;
+}
+.meta.link {
+  color: #d19a66;
+}
+.meta.require {
+  color: #61afef;
+}
+.meta.selector {
+  color: #c678dd;
+}
+.meta.separator {
+  background-color: #373b41;
+  color: #abb2bf;
+}
+.meta.tag {
+  color: #abb2bf;
+}
+.underline {
+  text-decoration: underline;
+}
+.none {
+  color: #abb2bf;
+}
+.invalid.deprecated {
+  color: #523d14 !important;
+  background-color: #e0c285 !important;
+}
+.invalid.illegal {
+  color: #ffffff !important;
+  background-color: #e05252 !important;
+}
+.markup.bold {
+  color: #d19a66;
+  font-weight: bold;
+}
+.markup.changed {
+  color: #c678dd;
+}
+.markup.deleted {
+  color: #e06c75;
+}
+.markup.italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.markup.heading {
+  color: #e06c75;
+}
+.markup.heading .punctuation.definition.heading {
+  color: #61afef;
+}
+.markup.link {
+  color: #c678dd;
+}
+.markup.inserted {
+  color: #98c379;
+}
+.markup.quote {
+  color: #d19a66;
+}
+.markup.raw {
+  color: #98c379;
+}
+.source.cs .keyword.operator {
+  color: #c678dd;
+}
+.source.css .property-name,
+.source.css .property-value {
+  color: #828997;
+}
+.source.css .property-name.support,
+.source.css .property-value.support {
+  color: #abb2bf;
+}
+.source.gfm .markup {
+  -webkit-font-smoothing: auto;
+}
+.source.gfm .link .entity {
+  color: #61afef;
+}
+.source.ini .keyword.other.definition.ini {
+  color: #e06c75;
+}
+.source.java .storage.modifier.import {
+  color: #e5c07b;
+}
+.source.java .storage.type {
+  color: #e5c07b;
+}
+.source.java-properties .meta.key-pair {
+  color: #e06c75;
+}
+.source.java-properties .meta.key-pair > .punctuation {
+  color: #abb2bf;
+}
+.source.js .keyword.operator {
+  color: #56b6c2;
+}
+.source.js .keyword.operator.delete,
+.source.js .keyword.operator.in,
+.source.js .keyword.operator.of,
+.source.js .keyword.operator.instanceof,
+.source.js .keyword.operator.new,
+.source.js .keyword.operator.typeof,
+.source.js .keyword.operator.void {
+  color: #c678dd;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json {
+  color: #e06c75;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json > .punctuation.string {
+  color: #e06c75;
+}
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json > .punctuation,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json > .punctuation {
+  color: #98c379;
+}
+.source.json .meta.structure.dictionary.json > .constant.language.json,
+.source.json .meta.structure.array.json > .constant.language.json {
+  color: #56b6c2;
+}
+.source.ruby .constant.other.symbol > .punctuation {
+  color: inherit;
+}
+.source.python .keyword.operator.logical.python {
+  color: #c678dd;
+}
+.source.python .variable.parameter {
+  color: #d19a66;
+}
+</style>
+  </head>
+  <body class='markdown-preview' data-use-github-style><h1 id="c-">C++--多态</h1>
+<hr>
+<h6 id="-">参考书籍：</h6>
+<ul>
+<li>《C++实践之路》--【美】Bartosz Milewski 著 周良忠 译</li>
+<li>《C++语言程序设计教程（第二版）》--沈显君 杨进才 张勇 编著</li>
+</ul>
+<hr>
+<p>&ensp;&ensp;&ensp;&ensp;多态这个在面向对象编程里面是非常重要的。在《C++实践之路》一书中对于多态有个很形象的比喻：</p>
+<blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;收音机、磁带机及CD机形态各不相同，但他们具有相同的音频输出接口。你可以将耳机插入此接口来收听音乐，而与音乐是否来自于调制载波、录音带上的磁畴或可塑磁盘铝层上的一系列起凹点无关。从音乐爱好者角度来看，所有这些设备都代表音频源。只要他们提供了相同的接口（音频插口），聆听音乐的过程就与之无关。</p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;到底多态有什么优点，有什么魅力，我只能说你代码量上到一定的程度就会深深爱上他，这个多态我个人觉得是非常有趣好玩的！接下来具体来说明一下：</p>
+<p>&ensp;&ensp;&ensp;&ensp;先来梳理一遍相关知识点：</p>
+<h2 id="-">派生类的构造与析构</h2>
+<p>&ensp;&ensp;&ensp;&ensp;在《C++语言程序设计教程》一书中是这样定义的：</p>
+<blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;在派生类对象的成员中，从基类继承来的成员被封装为基类子对象，他们的初始化由派生类构造函数隐含调用基类构造函数进行初始化；内嵌成员对象则隐含调用成员类的构造函数予以初始化；派生类新增的数据成员由派生类在自己定义的构造函数中进行初始化。<br>&ensp;&ensp;&ensp;&ensp;派生类的析构函数只负责把派生类新增的非对象成员清理工作做好就够了，系统会自己调用基类及成员函数的析构函数来对基类子对象及对象成员进行清理。</p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;不得不说教科书书上讲的真是专业啊，我是讲不出这种水平的，所以用我自己的话来说一下关键点：<br>&ensp;&ensp;&ensp;&ensp;我们知道继承呢就是拥有了父亲那里的一切，包括父亲类的构造和析构，还可以有自己的特色（自己的新方法和新成员）。所以在初始化一个派生类对象时，从父类继承来的构造函数会隐含的调用来初始化从父类中继承来的成员，而派生类自己新增的成员只能通过自己的构造函数进行初始化。水平有限，可能解释的不太清楚，看下例子：</p>
+<pre class="editor-colors lang-c++"><div class="line"><span class="source cpp"><span class="meta preprocessor include c"><span class="keyword control directive include c"><span class="punctuation definition directive c"><span>#</span></span><span>include</span></span><span>&nbsp;</span><span class="string quoted other lt-gt include c"><span class="punctuation definition string begin c"><span>&lt;</span></span><span>iostream</span><span class="punctuation definition string end c"><span>&gt;</span></span></span></span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Father</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Father</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>create&nbsp;father</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span><span>;</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Father</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>delete&nbsp;father</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span><span>;</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Son</span></span><span>&nbsp;:</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Father</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Son</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>create&nbsp;son</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span><span>;</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Son</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>delete&nbsp;son</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span><span>;</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="storage type c"><span>int</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>main</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;Son*&nbsp;son&nbsp;=&nbsp;</span><span class="keyword control cpp"><span>new</span></span><span class="meta function-call c"><span class="punctuation whitespace function-call leading c"><span>&nbsp;</span></span><span class="support function any-method c"><span>Son</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control cpp"><span>delete</span></span><span>&nbsp;son;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation whitespace support function leading c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="support function C99 c"><span>system</span></span><span>(</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>pause</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control c"><span>return</span></span><span>&nbsp;</span><span class="constant numeric c"><span>0</span></span><span>;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block end c"><span>}</span></span></span></span></span></div></pre>
+<p>&ensp;&ensp;&ensp;&ensp;运行结果：<br><img src="D:\code\markdown\Deity_Way\profession\program\C++\Book\photo\polymorphic\polymorphic1.jpg" alt="polymorphic1"></p>
+<p>&ensp;&ensp;&ensp;&ensp;从上面的运行结果可以看到当我们初始化一个派生类对象 son 时，程序先调用了基类 Father 的构造函数，然后再是派生类 Son 自己的构造函数。而销毁派生类对象 son 时，先调用派生类自己的析构函数，然后调用基类的析构函数，刚好与构造函数的调用顺序相反。</p>
+<h2 id="-">多态性概述</h2>
+<p>&ensp;&ensp;&ensp;&ensp;在《C++语言程序设计教程》一书中是这样说的：</p>
+<blockquote>
+<p>多态是指同样的消息被不同类型的对象接受时导致完全不同的行为</p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;这个干讲我讲不清（其实我现在刚开始懂点皮毛），在后面的例子中慢慢领会</p>
+<h2 id="-">虚函数</h2>
+<p>&ensp;&ensp;&ensp;&ensp;我们知道父类的对象可以指向子类对象（这是一个very nice的功能，我个人感觉这就是面向对象编程的魅力，更符合人的思维），我们看看下面一段代码：</p>
+<pre class="editor-colors lang-c++"><div class="line"><span class="source cpp"><span class="meta preprocessor include c"><span class="keyword control directive include c"><span class="punctuation definition directive c"><span>#</span></span><span>include</span></span><span>&nbsp;</span><span class="string quoted other lt-gt include c"><span class="punctuation definition string begin c"><span>&lt;</span></span><span>iostream</span><span class="punctuation definition string end c"><span>&gt;</span></span></span></span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Man</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Man</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Man</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage type c"><span>void</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>welcome</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>Welcome&nbsp;man</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Boy</span></span><span>:</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Man</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Boy</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Boy</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage type c"><span>void</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>welcome</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>Welcome&nbsp;boy</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="storage type c"><span>int</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>main</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;Man*&nbsp;man&nbsp;=&nbsp;</span><span class="keyword control cpp"><span>new</span></span><span>&nbsp;Man;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man-&gt;</span><span class="meta function-call c"><span class="support function any-method c"><span>welcome</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;Boy&nbsp;boy&nbsp;=</span><span class="meta function-call c"><span class="punctuation whitespace function-call leading c"><span>&nbsp;</span></span><span class="support function any-method c"><span>Boy</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;boy.</span><span class="meta function-call c"><span class="support function any-method c"><span>welcome</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man&nbsp;=&nbsp;&amp;boy;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man-&gt;</span><span class="meta function-call c"><span class="support function any-method c"><span>welcome</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation whitespace support function leading c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="support function C99 c"><span>system</span></span><span>(</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>pause</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control c"><span>return</span></span><span>&nbsp;</span><span class="constant numeric c"><span>0</span></span><span>;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block end c"><span>}</span></span></span></span></span></div></pre>
+<p>&ensp;&ensp;&ensp;&ensp;运行结果如下：<br><img src="D:\code\markdown\Deity_Way\profession\program\C++\Book\photo\polymorphic\polymorphic2.jpg" alt="polymorphic2"></p>
+<p>&ensp;&ensp;&ensp;&ensp;我们可以看到第三个输出结果是有问题的，完全与我们想象中的不一样啊：man 指针既然指向了 boy，那调用 welcome 方法时应该显示 Welcome boy，但他显示是不是。为了让结果显示符合我们人的思维，这时候虚函数就登场了，让我们看看它是如何发挥做用的：<br>&ensp;&ensp;&ensp;&ensp;现在我们把 welcome 这个方法定义为虚函数，即在函数前面加关键字 virtual，如下面的代码：</p>
+<pre class="editor-colors lang-c++"><div class="line"><span class="source cpp"><span class="meta preprocessor include c"><span class="keyword control directive include c"><span class="punctuation definition directive c"><span>#</span></span><span>include</span></span><span>&nbsp;</span><span class="string quoted other lt-gt include c"><span class="punctuation definition string begin c"><span>&lt;</span></span><span>iostream</span><span class="punctuation definition string end c"><span>&gt;</span></span></span></span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Man</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Man</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Man</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation whitespace comment leading cpp"><span>&nbsp;&nbsp;</span></span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>加上关键字virtual</span><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier cpp"><span>virtual</span></span><span>&nbsp;</span><span class="storage type c"><span>void</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>welcome</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>Welcome&nbsp;man</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Boy</span></span><span>&nbsp;:</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Man</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Boy</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Boy</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation whitespace comment leading cpp"><span>&nbsp;&nbsp;</span></span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>加上关键字virtual</span><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier cpp"><span>virtual</span></span><span>&nbsp;</span><span class="storage type c"><span>void</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>welcome</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>Welcome&nbsp;boy</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="storage type c"><span>int</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>main</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;Man*&nbsp;man&nbsp;=&nbsp;</span><span class="keyword control cpp"><span>new</span></span><span>&nbsp;Man;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man-&gt;</span><span class="meta function-call c"><span class="support function any-method c"><span>welcome</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;Boy&nbsp;boy&nbsp;=</span><span class="meta function-call c"><span class="punctuation whitespace function-call leading c"><span>&nbsp;</span></span><span class="support function any-method c"><span>Boy</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;boy.</span><span class="meta function-call c"><span class="support function any-method c"><span>welcome</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man&nbsp;=&nbsp;&amp;boy;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man-&gt;</span><span class="meta function-call c"><span class="support function any-method c"><span>welcome</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation whitespace support function leading c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="support function C99 c"><span>system</span></span><span>(</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>pause</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control c"><span>return</span></span><span>&nbsp;</span><span class="constant numeric c"><span>0</span></span><span>;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block end c"><span>}</span></span></span></span></span></div></pre>
+<p>&ensp;&ensp;&ensp;&ensp;运行结果如下：<br><img src="D:\code\markdown\Deity_Way\profession\program\C++\Book\photo\polymorphic\polymorphic3.jpg" alt="polymorphic3"></p>
+<p>&ensp;&ensp;&ensp;&ensp;我们可以看到结果运行如我们预期的一样，它的实现原理在书中也有提及，但没看懂，先不管他。<br>&ensp;&ensp;&ensp;&ensp;虚函数有下面一些使用注意：</p>
+<ul>
+<li>&ensp;&ensp;&ensp;&ensp;虚函数不能是静态成员函数（即加关键字 static 的方法），也就是关键字 virtual 和 static 不能共存；虚函数也能是友元函数。因为静态成员函数和友元函数不属于某个对象。</li>
+<li>即使虚函数在类的内部定义，编译时，仍将其当做非内联的，即虚函数不能成为内联函数（内联函数：在类的内部定义实现了的，像上面的 welcome 函数一样）</li>
+<li>构造函数不能是虚函数，析构函数可以是虚构函数，通常我们也将析构函数声明为虚函数。</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;虚函数这个是很有作用的，明白为什么用它，写的代码更符合人的逻辑，更面向对象</p>
+<h2 id="-">抽象类</h2>
+<p>&ensp;&ensp;&ensp;&ensp;在《C++语言程序设计教程》中抽象的说明是：</p>
+<blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;抽象类是一种特殊的类，是为了抽象的目的而建立的，建立抽象类，就是为了通过它多态的使用其中的成员函数，为一个类族提供统一的操作平台。抽象类处于类层次的上层，一个抽象类无法自身实例化，也就是说我们无法声明一个抽象类的对象，而只能通过继承的机制，生成抽象类的非抽象派生类，然后在实例化。</p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;像上面这种说明读的时候大多数人都是只理解表面的中文的文字意思，至于它到底在说啥，第一次的时候我也不知道，嘿嘿。这些看看例子，自己打打代码尝试一下基本上就了解了。回到正题，我们来以人的思维来谈谈抽象类的概念：<br>&ensp;&ensp;&ensp;&ensp;就拿买衣服这个来说：你去买衣服，你跟老板说你买衣服，老板会说你买什么样的衣服，要衬衣、T恤、外套······？然后你说要外套，老板问你什么颜色，什么款式；最后你说啥啥就买到了一件衣服。这个例子中的衣服和衬衣、T恤、外套这些都相当于抽象类了，它们在现实生活中不存在，只是一个概念，而你买的衣服是一个实体，是存在的；还有你买的衣服继承于外套，而外套又继承于衣服。感觉啰嗦了点，将就看吧，水平有限，毕竟理科生（不过个人感觉挺形象的）。我们来看下面一段代码：</p>
+<pre class="editor-colors lang-c++"><div class="line"><span class="source cpp"><span class="meta preprocessor include c"><span class="keyword control directive include c"><span class="punctuation definition directive c"><span>#</span></span><span>include</span></span><span>&nbsp;</span><span class="string quoted other lt-gt include c"><span class="punctuation definition string begin c"><span>&lt;</span></span><span>iostream</span><span class="punctuation definition string end c"><span>&gt;</span></span></span></span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Man</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Man</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier cpp"><span>virtual</span></span><span>&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Man</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;=&nbsp;</span><span class="constant numeric c"><span>0</span></span><span>;</span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>这样就这样了一个抽象类</span><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier cpp"><span>virtual</span></span><span>&nbsp;</span><span class="storage type c"><span>void</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>welcome</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>Welcome&nbsp;man</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="storage type c"><span>int</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>main</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;Man*&nbsp;man&nbsp;=&nbsp;</span><span class="keyword control cpp"><span>new</span></span><span>&nbsp;Man;</span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>我们在这里生成一个具体的抽象类&nbsp;Man&nbsp;对象，但编译器报错，不能生成</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation whitespace support function leading c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="support function C99 c"><span>system</span></span><span>(</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>pause</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control c"><span>return</span></span><span>&nbsp;</span><span class="constant numeric c"><span>0</span></span><span>;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block end c"><span>}</span></span></span></span></span></div></pre>
+<p>&ensp;&ensp;&ensp;&ensp;带有纯虚函数的类被称为抽象类，一个抽象类至少具有一个纯虚函数（在Java中每个函数都有纯虚函数）；纯虚函数定义的形式为：<br>    virtual 函数类型 函数名 （参数表） = 0；<br>&ensp;&ensp;&ensp;&ensp;你也许会问这样的抽象类有什么用？看看下面的：</p>
+<pre class="editor-colors lang-c++"><div class="line"><span class="source cpp"><span class="meta preprocessor include c"><span class="keyword control directive include c"><span class="punctuation definition directive c"><span>#</span></span><span>include</span></span><span>&nbsp;</span><span class="string quoted other lt-gt include c"><span class="punctuation definition string begin c"><span>&lt;</span></span><span>iostream</span><span class="punctuation definition string end c"><span>&gt;</span></span></span></span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Man</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Man</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Man</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span><span>;</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation whitespace comment leading cpp"><span>&nbsp;&nbsp;</span></span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>这次换welcome函数来成为纯虚函数</span><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier cpp"><span>virtual</span></span><span>&nbsp;</span><span class="storage type c"><span>void</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>welcome</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span><span>&nbsp;=&nbsp;0</span><span>;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Boy</span></span><span>&nbsp;:</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Man</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Boy</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Boy</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation whitespace comment leading cpp"><span>&nbsp;&nbsp;</span></span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>对&nbsp;welcome&nbsp;的实现</span><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage type c"><span>void</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>welcome</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>Welcome&nbsp;man</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage type cpp"><span>class</span></span><span>&nbsp;</span><span class="entity name type cpp"><span>Girl</span></span><span>&nbsp;:</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Man</span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block begin cpp"><span>{</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="storage modifier cpp"><span>public:</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="meta function constructor cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="entity name function cpp"><span>Girl</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta function destructor cpp"><span class="entity name function cpp"><span>~Girl</span></span><span class="punctuation definition parameters begin c"><span>(</span></span><span class="punctuation definition parameters end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span class="punctuation section block end c"><span>}</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation whitespace comment leading cpp"><span>&nbsp;&nbsp;</span></span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>对&nbsp;welcome&nbsp;的实现</span><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage type c"><span>void</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>welcome</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span><span>&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>Welcome&nbsp;girl</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="punctuation section block end c"><span>}</span></span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta class-struct-block cpp"><span class="punctuation section block end cpp"><span>}</span></span></span><span>;</span></span></div><div class="line"><span class="source cpp"><span>&nbsp;</span></span></div><div class="line"><span class="source cpp"><span class="storage type c"><span>int</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>main</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="punctuation section parens end c"><span>)</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;Man*&nbsp;man;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man&nbsp;=&nbsp;</span><span class="keyword control cpp"><span>new</span></span><span>&nbsp;Boy;</span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>指向&nbsp;Boy&nbsp;的对象</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man-&gt;</span><span class="meta function-call c"><span class="support function any-method c"><span>welcome</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man&nbsp;=&nbsp;</span><span class="keyword control cpp"><span>new</span></span><span>&nbsp;Girl;</span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>指向&nbsp;Girl&nbsp;的对象</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;man-&gt;</span><span class="meta function-call c"><span class="support function any-method c"><span>welcome</span></span><span class="punctuation definition parameters c"><span>(</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation whitespace support function leading c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="support function C99 c"><span>system</span></span><span>(</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>pause</span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control c"><span>return</span></span><span>&nbsp;</span><span class="constant numeric c"><span>0</span></span><span>;</span></span></span></span></div><div class="line"><span class="source cpp"><span class="meta function c"><span class="meta block c"><span class="punctuation section block end c"><span>}</span></span></span></span></span></div></pre>
+<p>&ensp;&ensp;&ensp;&ensp;结果如下：<br><img src="D:\code\markdown\Deity_Way\profession\program\C++\Book\photo\polymorphic\polymorphic4.jpg" alt="polymorphic4"></p>
+<p>&ensp;&ensp;&ensp;&ensp;我们可以用 Man 这个对象指针随便指向 Boy 或 Girl 的对象，这个很有用的，而且它们都实现了不同的功能。</p>
+<h2 id="-">参考链接</h2>
+<p><a href="http://www.jb51.net/article/54225.htm">C++中重载、重写（覆盖）和隐藏的区别实例分析</a></p></body>
+</html>
