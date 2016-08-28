@@ -1,0 +1,204 @@
+test
+
+# --------------
+# Please enter the commit message for your changes. Everything below
+# this paragraph is ignored, and an empty message aborts the commit.
+# Just close the window to accept your message.
+diff --git "a/extention/\345\246\202\344\275\225\345\255\246\344\271\240\347\232\204\344\270\200\347\202\271\344\275\223\346\202\237.md" "b/extention/\345\246\202\344\275\225\345\255\246\344\271\240\347\232\204\344\270\200\347\202\271\344\275\223\346\202\237.md"
+new file mode 100644
+index 0000000..024e49e
+--- /dev/null
++++ "b/extention/\345\246\202\344\275\225\345\255\246\344\271\240\347\232\204\344\270\200\347\202\271\344\275\223\346\202\237.md"
+@@ -0,0 +1,35 @@
++# 关于如何学习的一点体悟
++****
++&ensp;&ensp;&ensp;&ensp;在如今这信息大爆炸的时代，信息的交流和获取变得容易了很多，但由于信息量的庞大，我们有时候会深陷其中跳不出来。自己一直也在寻找学习的方法，比较IT这个行业的技术更新还是挺快的，现在感觉自己要学习还是有太多太多，有很多自己到现在都没有开始学习。今天看到下面一篇关于碎片化学习的文字，自己深受启发，而要让自己看到的变成自己的，我们需要与知识互动，不管写多写少，要将自己学到的与自己脑海中知识联系起来，所以我写了这篇感悟。
++
++### 学习的起点不是焦虑，而是问题
++> &ensp;&ensp;&ensp;&ensp;学习的起点不是某人在朋友圈晒的一本书、推荐的一个微信文、或者这个行业的一个经典教材引发你的焦虑，而应该是你真实遇到的一个问题
++
++&ensp;&ensp;&ensp;&ensp;上面这句话是文章中的作者说的。想到自己这一年的学习过程，就有了很多的感悟了。自己很多情况下是看不下车书的，自己买了很多的很厚的的经典书籍，比如：《Java编程思想》、《算法导论》、《灰帽黑客》等等，但是到现在自己连1/5都没有看到，有时候就是没有看下次的兴趣，到现在感觉自己的学习进度有点缓慢了。现在自己是很想有自己的一技之长的，还赚钱养活自己，用着父母的钱感觉是很不爽的。
++
++&ensp;&ensp;&ensp;&ensp;而想起自己一年中进步快速的阶段中，自己都说在一个具体的问题下展开的。感觉自己的编程能力上一个台阶的时候是在做一个类似雷霆战机的游戏，用C++写的。当时自己的对C++的运用还不是很熟练，面向对象编程还不是太好（自己现在也不敢说自己会，在看到设计模式的时候，感觉自己现在才开始揭开面向对象编程的面纱）。当时自己连续敲代码敲了一个月，可以说是没日没夜的敲，其中看不懂就翻身，上网查，知识一点一点的累积，一个月以后感觉自己的编程能力就上了一个台阶。
++
++&ensp;&ensp;&ensp;&ensp;所以我很赞同文章中作者的观点，而自己现在的学习进度开始缓慢了，现在想找一些自己感兴趣的问题来自己研究，在这个过程中来快速的提升自己。
++
++### 扩充学习资源，人事网书
++&ensp;&ensp;&ensp;&ensp;最好的方式是：
++
++- 从有经验的人开始，根据你提出的问题，给你清晰的建议、方向和边界；
++- 找到行业对标，看看人家是怎么做的；
++- 进一步用网络搜索资料和书的总结和评论，最后才是系统的看书；
++
++&ensp;&ensp;&ensp;&ensp;在学习的过程中学习资源的搜索确实是很重要的，搜索的好了，问题的学习和解决会好很多。但自己到现在好像都是一个在摸索，感觉只要指导的人给我一个方向就行了。真的，这个方向真的很重要，在解决问题的时候，你没有方向，很难继续学习下去，自己以前就有过这样的经历。不知道知乎能不能在这上面有一些帮助。
++
++### 721 法则
++> &ensp;&ensp;&ensp;&ensp;行动学习理论认为，人要掌握一门技能，需要10%的时间学习知识和信息，70%的时间练习和实践，还有20%的时间与 人沟通和讨论
++
++&ensp;&ensp;&ensp;&ensp;碎片化学习可以在10%的时间中，在最后的系统化学习上自己还是存在一些疑惑的（难道大学的课程还是要好好上的。。。。。。。）
++
++### 输出倒逼输入
++> &ensp;&ensp;&ensp;&ensp;先建立一个结构，你的知识和信息会自己吸附在结构之上。时间一长，你会成为一个能根据结构链接知识的人
++
++- 积件式写作：就是用Ctrl C 加 Ctrl V 的方法，先评出一篇符合逻辑的文字（用在编程中就是辅助别人的代码，开始时先让程序能跑起来，自己开始编程的时候就是先敲击别人的代码开始的，想想这个方法在现在自己还是在用的）
++- 进入个性化改写阶段：根据自己具体情况的要求改写（看来很多的方法都是通用的啊，哈哈)
++- 创造性重构：创造出全新的思路和模型
++
++&ensp;&ensp;&ensp;&ensp;看来自己要用现在在做的这个项目好好试验一下，把设计模式搞上去试试，还有就是好好深入了解一下 openCV，需要写一写博客之类的，感觉做了一个月了，自己应该能写了。好好整，还有好多的事情没做呢。
+diff --git "a/profession/program/C++/Book/C++ GUI QT4\347\274\226\347\250\213.md" "b/profession/program/C++/Book/C++ GUI QT4\347\274\226\347\250\213.md"
+new file mode 100644
+index 0000000..743d75c
+--- /dev/null
++++ "b/profession/program/C++/Book/C++ GUI QT4\347\274\226\347\250\213.md"	
+@@ -0,0 +1,6 @@
++# <<C++ GUI QT4编程>> 阅读知识点记录
++****
++
++## 多线程
++### 变量中的定义关键字 volatile
++&ensp;&ensp;&ensp;&ensp;在书中我理解的大概意思是要保证数据的一致性和最新性，而如果不使用这个关键字的话编译器可能会对这个变量进行优化而导致不正确的结果。这个可能自己要用到。
+\ No newline at end of file
+diff --git a/profession/program/java/res/photo/document-uid79144labid1113timestamp1436110985475.png b/profession/program/java/res/photo/document-uid79144labid1113timestamp1436110985475.png
+new file mode 100644
+index 0000000..f220bda
+Binary files /dev/null and b/profession/program/java/res/photo/document-uid79144labid1113timestamp1436110985475.png differ
+diff --git "a/profession/program/openCV/openCV SVM\347\256\200\345\215\225\344\275\277\347\224\250.md" "b/profession/program/openCV/openCV SVM\347\256\200\345\215\225\344\275\277\347\224\250.md"
+new file mode 100644
+index 0000000..38df7be
+--- /dev/null
++++ "b/profession/program/openCV/openCV SVM\347\256\200\345\215\225\344\275\277\347\224\250.md"	
+@@ -0,0 +1,8 @@
++# openCV SVM简单使用
++***
++
++&ensp;&ensp;&ensp;&ensp;这个机器学习自己也是现在才刚开始接触，要说清楚它的原理感觉是误导人的,所有我现在就不说原理了，等以后有更深的体会能说出一些道道的时候再补上哈。
++&ensp;&ensp;&ensp;&ensp;在一年的代码学习中一直感觉最好的学习就是边用边学，你懂的，一开始看啥理论和源码那叫一个枯燥无味啊，就想打瞌睡。个人感觉打代码就是一个代码体验啊！在这个漫长的技术道路上成就感这个东西很重要，所以我们先简单的来弄一个成果。下面直径上详细的代码步骤，注意环境是win7，版本是2.4.4，我们以图片为例，其他自己类推，估计和这个差不多：
++
++## 设置训练数据
++&ensp;&ensp;&ensp;&ensp;在给机器的训练中需要两个数据：一个是原始的数据，一个是相应原始数据的判断标记（通常是 1 和 -1）。
+\ No newline at end of file
+diff --git a/profession/system/software/virsual_studio/photo/gitVS2010/1.png b/profession/system/software/virsual_studio/photo/gitVS2010/1.png
+new file mode 100644
+index 0000000..586ef7e
+Binary files /dev/null and b/profession/system/software/virsual_studio/photo/gitVS2010/1.png differ
+diff --git a/profession/system/software/virsual_studio/photo/gitVS2010/2.png b/profession/system/software/virsual_studio/photo/gitVS2010/2.png
+new file mode 100644
+index 0000000..16c174e
+Binary files /dev/null and b/profession/system/software/virsual_studio/photo/gitVS2010/2.png differ
+diff --git a/profession/system/software/virsual_studio/photo/gitVS2010/3.png b/profession/system/software/virsual_studio/photo/gitVS2010/3.png
+new file mode 100644
+index 0000000..078ef3d
+Binary files /dev/null and b/profession/system/software/virsual_studio/photo/gitVS2010/3.png differ
+diff --git a/profession/system/software/virsual_studio/photo/gitVS2010/4.png b/profession/system/software/virsual_studio/photo/gitVS2010/4.png
+new file mode 100644
+index 0000000..2459004
+Binary files /dev/null and b/profession/system/software/virsual_studio/photo/gitVS2010/4.png differ
+diff --git a/profession/system/software/virsual_studio/photo/gitVS2010/5.png b/profession/system/software/virsual_studio/photo/gitVS2010/5.png
+new file mode 100644
+index 0000000..ad7d7e0
+Binary files /dev/null and b/profession/system/software/virsual_studio/photo/gitVS2010/5.png differ
+diff --git a/profession/system/software/virsual_studio/photo/gitVS2010/6.png b/profession/system/software/virsual_studio/photo/gitVS2010/6.png
+new file mode 100644
+index 0000000..a765215
+Binary files /dev/null and b/profession/system/software/virsual_studio/photo/gitVS2010/6.png differ
+diff --git "a/profession/system/software/virsual_studio/vs2010\344\270\255\347\232\204git\351\205\215\347\275\256.md" "b/profession/system/software/virsual_studio/vs2010\344\270\255\347\232\204git\351\205\215\347\275\256.md"
+index bb71a8c..6a235dc 100644
+--- "a/profession/system/software/virsual_studio/vs2010\344\270\255\347\232\204git\351\205\215\347\275\256.md"
++++ "b/profession/system/software/virsual_studio/vs2010\344\270\255\347\232\204git\351\205\215\347\275\256.md"
+@@ -2,16 +2,80 @@
+ ***
+ 关键字： *VS* *git*
+ 
+-## 1.git for window 的安装和设置：
+-    使用git你首先要有个账号，没有的自己先去申请一个，记住你的邮箱
++## 简单步骤
++### 下载安装  git 相关插件
++&ensp;&ensp;&ensp;&ensp;这个安装没什么难度，安装的相应设置一路默认即可。稍微记住程序的安装路径。
+ 
+-    安装参照下面的这个博客，介绍的很到位,照着文章上说的做：
+-    我建议除安装路径外，其他全部默认
+-    [http://blog.csdn.net/laogong5i0/article/details/10974285](http://blog.csdn.net/laogong5i0/article/details/10974285)
+-    还有一些设置：
+-    [http://blog.csdn.net/softwave/article/details/7957938](http://blog.csdn.net/softwave/article/details/7957938)
++[git for windows](https://www.baidu.com/link?url=MNY53iQSgfqi9R7_k5Q_Q0M5QZF5QUBWGKT36rEmqF47g-jBTEibUFbgw_3St66cVDFJS_1edDNSaxf7gx6cbQDuAIoYjvBnu63KnHkJqu7&wd=&eqid=bdd6fae90007896a0000000357a1a64b)
+ 
+-## 2.不能push的问题解决：
++[git extensions](https://sourceforge.net/projects/gitextensions/)
++
++[git for vs2010](https://visualstudiogallery.msdn.microsoft.com/63a7e40d-4d71-4fbb-a23b-d262124b8f4c/file/29105/46/GitSccProvider.vsix)
++
++### 相关设置
++&ensp;&ensp;&ensp;&ensp;首先设置自己 git 的用户名和邮箱（没有的去申请一个），简单的在桌面上右键就会在菜单选项中看到看到 Git Bash Here,选择打开 git bash，如下图：
++
++![](./photo/gitVS2010/1.png)
++
++&ensp;&ensp;&ensp;&ensp;然后配置你的用户名和邮箱，输入下面的命令：
++
++    git config --global user.name "这里输入你的用户名"
++    git config --global user.email "这里输入你邮箱"
++
++&ensp;&ensp;&ensp;&ensp;如下图所示：
++
++![](./photo/gitVS2010/2.png)
++
++&ensp;&ensp;&ensp;&ensp;接下来是配置 Git Extensions，右键菜单中有 Git Extensions 选择设置，弹出如下图的设置界面，按照相应的提示去设置即可；然后点击界面中的 SSH选择 “指定的SSH客户端”选择 OpenSSH，OK。
++
++![](./photo/gitVS2010/3.png)
++
++&ensp;&ensp;&ensp;&ensp;最后是 VS2010 的配置，进入VS的选项配置界面，选择 Source Control，选择当前源代码管理插件为 Git Source Control Provider，如下图；然后选择 Source Control 下的 Git Source Control Provider(如果没有，则可能需要重启一下VS),然后按照相应的提示进行配置，如下图所示：
++
++![](./photo/gitVS2010/4.png)
++![](./photo/gitVS2010/5.png)
++
++### 新建仓库及推送至远程仓库
++&ensp;&ensp;&ensp;&ensp;首先需要初始化项目仓库：选择相应项目后右键菜单中有 Create Git Repository，点击后便会初始化一个项目仓库，如下图：
++
++![](./photo/gitVS2010/6.png)
++
++&ensp;&ensp;&ensp;&ensp;接下来如果项目中有文件就可以提交到本地仓库和远程仓库中：选中项目右键菜单中有 Git（如果提交过或克隆过项目的话后面后有当前分支的名称），后面的选项中就有 Commit 这个选项，点中后进入添加提交界面，如下图所示：
++
++![](./photo/gitVS2010/7.png)
++
++&ensp;&ensp;&ensp;&ensp;在上图中左上角是项目没有进行添加跟踪的文件（即没有提交的文件），当然开始时时里面许多文件读书不必要的，可以通过设置 Git 的一个配置文件来过滤一些永远不会添加的文件，文件太多的时候这个就比较有用，现在文件少就将就了（其实我现在也不怎么用得好）。目前就手动选择需要添加的文件，比如那些自己写的 .h .cpp 文件还有 .sln 工程配置文件（上传这三个其实就可以了，别人有这些文件就可以打开你的项目了),点击载入把上面的这些文件添加上去，如下图所示：
++
++![](./photo/gitVS2010/8.png)
++
++&ensp;&ensp;&ensp;&ensp;接下来填写提交信息（这个提交信息必须填写，不然提交不了），这个提交在恢复代码时候比较有用的，所以提交的时候尽量填写一些有用的信息，比如这次提交完成了什么功能或有哪些变化，怎样在恢复代码的时候可以根据这些信息选择恢复到什么时候的代码样子。填写完提交信息就可以选择提交了（提交就是提交到本地的项目仓库中，恢复好像也是从这个里面恢复，不知道远程仓库中可不可以，毕竟玩的世界也不长，嘿嘿），推送就是提交到远程仓库，第一次就点击提交到提交并推送吧。
++&ensp;&ensp;&ensp;&ensp;点击完后会先进行本地的提交，然后出现远程仓库推送界面，如下图所示：
++
++![](./photo/gitVS2010/9.png)
++
++&ensp;&ensp;&ensp;&ensp;我们先点击管理远程来添加我们的远程仓库地址,如下图，其中的名称随便填，网站填写项目的网站，然后保存更改。
++
++![](./photo/gitVS2010/10.png)
++
++&ensp;&ensp;&ensp;&ensp;下面的分支我也接触不多，毕竟平时玩的时候是自己一个人，这个分支的意义大概是：每个人是需要一个不同的分支的，修改编辑完后可以退送到自己的分支也可以推送到主分支。下面的拉取可以把远程仓库的文件复制到本地来。比如远程仓库中有一个新的类文件你没有，你使用拉取就可以把它复制到本地来，但你还是有自己手动添加这个类文件（这个比较麻烦，我没找到自动添加的方法）。推送就是把你本地的代码与远程的代码进行合并，让远程的代码和你本地的保持同步，推送成功就大概如下图：
++
++![](./photo/gitVS2010/11.jpg)
++
++&ensp;&ensp;&ensp;&ensp;这时刷新GitHub中的页面可以看到项目已经添加到GitHub中了：
++
++![](./photo/gitVS2010/12.jpg)
++
++### 从GitHub拉代码到本地
++&ensp;&ensp;&ensp;&ensp;打开VS2010，点击Git菜单的Clone repository：
++
++![](./photo/gitVS2010/13.jpg)
++
++&ensp;&ensp;&ensp;&ensp;在弹出的克隆对话框中输入相应的信息,然后代码就拉倒了相应的盘中，可以打开VS的 .sln文件进行加载项目使用了
++
++![](./photo/gitVS2010/14.jpg)
++
++## 使用过程中遇到的问题及解决办法
++### 不能push的问题解决：
+     但可能你不能提交项目，接下来需要从下面的方法去尝试解决：
+     1.配置你的git，按照下面的博客进行设置：
+     git bash 按照上面我建议的安装后在桌面右键后会有
+@@ -19,3 +83,6 @@
+     2.配置好以后你可能也不行，那就可能是你在新建项目时候自动生成的README.md造成的，那你
+     就需要先pull一下，这个在vs的push是上面，下面是参考源：
+     [http://jingyan.baidu.com/article/f3e34a12a25bc8f5ea65354a.html](http://jingyan.baidu.com/article/f3e34a12a25bc8f5ea65354a.html)
++
++## 参考链接
++[在VS2010中使用Git(转)](http://www.cnblogs.com/smallfa/p/4984547.html)
+\ No newline at end of file
